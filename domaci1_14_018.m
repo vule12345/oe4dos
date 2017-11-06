@@ -1,14 +1,13 @@
 % OE4DOS First homework 11/12/2017
 % Student : Vuk Vukomanovic 2014/0018
-% Git: 
+% Git: https://github.com/vule12345/oe4dos.git
 % This script contains first 4 tasks
 clear
 clc
 close all
 warning('off', 'images:initSize:adjustingMag')
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% 1. 
-% Enhance contrast of image ,,street.tif,, with various methods.
+%% 1. Enhance contrast of image ,,street.tif,, with various methods.
 % Report holds explanations of why certain method were used
 % In first part of code methods are used in RGB picture, in second half all
 % methods are used in LAB picture and than convereted back to RGB
@@ -17,6 +16,7 @@ disp('First part of homework starts here.');
 % Input image
 disp('Reading ,street.tif,, image')
 street = imread('ulazne_slike/street.tif');
+disp('Processing');
 figure
 imshow(street);
 set(gcf, 'Name', 'Ulazna slika, street');
@@ -122,7 +122,7 @@ disp('First part of homework ends here.')
 disp('Second part of homework starts here.')
 
 % Input image
-disp('Reading image')
+disp('Reading ,,lange.jpg,, image')
 lange = double(imread('ulazne_slike/lange.jpg'));
 disp('Processing')
 figure
@@ -145,7 +145,7 @@ title('Low pass filter metoda','Interpreter','LaTex','FontSize',16)
 % Laplacian filter methods
 laplacian_mask =  [0 1 0; 1 -4 1; 0 1 0];
 lange_laplacian_edge = imfilter(lange, laplacian_mask, 'replicate');
-lange_laplacian = uint8(lange + lange_laplacian_edge);
+lange_laplacian = uint8(lange - lange_laplacian_edge);
 figure
 imshow(lange_laplacian);
 set(gcf, 'Name', 'Laplacian filter');
@@ -173,19 +173,66 @@ title('Usrednjen gradient','Interpreter','LaTex','FontSize',16)
 
 temp_lange = mat2gray(lange_sobel_low)*255;
 
-% Adding image with images to original image
+% Adding averaged image to original image
 lange_sobel_result = im2uint8(mat2gray(lange+temp_lange));
 figure
 imshow(lange_sobel_result);
 set(gcf, 'Name', 'Slika nakon sabiranja pocente slike i dobijeng rezultata');
 title('Slika nakon sabiranja','Interpreter','LaTex','FontSize',16)
 
+% Adjusting contrast
 lange_sobel_result = imadjust(lange_sobel_result);
 figure
 imshow(lange_sobel_result)
 set(gcf, 'Name', 'Slika nakon porpravke kontrasta');
 title('Slika nakon porpravke kontrasta','Interpreter','LaTex','FontSize',16)
 
+% Writing to file
 imwrite(lange_sobel_result,'izlazne_slike/lange_sharp.jpg', 'Quality',100);
 
 disp('Second part of homework ends here.')
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+clear
+clc
+
+%% 2. Fix corrupted images
+% Report holds explanations of why certain method were used
+% Since more images need to be fixed, user written fucntion fix_corrupted
+% will be used.
+
+disp('Third part of homework starts now.');
+
+disp('Reading ,,corrupted1.jpg,, image')
+corrupted1 = imread('ulazne_slike/corrupted1.png');
+disp('Processing');
+figure
+imshow(corrupted1);
+set(gcf, 'Name', 'Ulazna slika');
+title('Ulazna slika','Interpreter','LaTex','FontSize',16),grid on
+res1 = fix_corrupted(corrupted1, 'on');
+
+
+disp('Reading ,,corrupted2.jpg,, image')
+corrupted2 = imread('ulazne_slike/corrupted2.png');
+disp('Processing');
+figure
+imshow(corrupted2);
+set(gcf, 'Name', 'Ulazna slika');
+title('Ulazna slika','Interpreter','LaTex','FontSize',16),grid on
+res2 = fix_corrupted(corrupted2);
+imshow(res2);
+
+disp('Reading ,,corrupted3.jpg,, image')
+corrupted3 = imread('ulazne_slike/corrupted3.png');
+disp('Processing');
+figure
+imshow(corrupted3);
+set(gcf, 'Name', 'Ulazna slika');
+title('Ulazna slika','Interpreter','LaTex','FontSize',16),grid on
+res3 = fix_corrupted(corrupted3);
+imshow(res3);
+
+
+disp('Third part of homework ends now.');
+
