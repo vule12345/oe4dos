@@ -55,7 +55,7 @@ set(gcf, 'Name', 'Nakon primene maske');
 final= mat2gray(a+mask_multiplied);
 figure
 imshow(final, []);
-set(gcf, 'Name', 'g');
+set(gcf, 'Name', 'final');
 
-
+imwrite(final,'izlazne_slike/lange_sharp4.jpg', 'Quality',100);
 
