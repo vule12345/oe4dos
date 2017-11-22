@@ -20,7 +20,7 @@ title('Ulazna slika, lange','Interpreter','LaTex','FontSize',16),grid on
 
 a=mat2gray(lange);
 
-% Krosicnje laplaciana za dobijanje pojacnih ivica
+% Koriscenje laplaciana za dobijanje pojacanih ivica
 laplacian_mask =  [0 1 0; 1 -4 1; 0 1 0];
 laplacian_res = mat2gray( imfilter(a, laplacian_mask, 'replicate'));
 lange_ench = mat2gray(a + laplacian_res);
@@ -57,5 +57,4 @@ figure
 imshow(final, []);
 set(gcf, 'Name', 'final');
 
-imwrite(final,'izlazne_slike/lange_sharp4.jpg', 'Quality',100);
 
