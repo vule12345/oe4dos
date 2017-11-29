@@ -6,7 +6,11 @@ scale_factor = s;
 
 % Filtering image to prevent anti-aliasing
 input = double(I);
+
+% Size of input image
 [old_M, old_N] = size(input);
+
+% Size for caclulating 
 P = 2*old_M-1; Q = 2*old_N-1;
 
 % Spectrum of input image
