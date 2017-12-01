@@ -369,7 +369,6 @@ clear
 % In this part of script, dos_non_local_means funcions is tested. Only one
 % call with chosen set of parametars is not commented because of duration
 % of function.
-tic
 disp('Last part of homework starts here')
 
 lena_noise = im2double(imread('ulazne_slike/lena_noise.tif'));
@@ -380,53 +379,53 @@ h = 0.06;
 K = [3, 5, 9];
 S = [15, 33, 51];
 
-disp('Loading 0%')
+displ('Loading 0%')
 
 % Function for call K=3 S=15
 result_K_3_S_15 = dos_non_local_means(lena_noise, K(1), S(1), var, h);
-psnr(result_K_3_S_15, lena_clean)
-disp('Loading 11%')
+psnr(result_K_3_S_15,lena_clean)
+displ('Loading 11%')
 
 % Function for call K=3 S=33
 result_K_3_S_33 = dos_non_local_means(lena_noise, K(1), S(2), var, h);
 psnr(result_K_3_S_33,lena_clean)
-disp('Loading 22%')
+displ('Loading 22%')
 
 % Function for call K=3 S=51
 result_K_3_S_51 = dos_non_local_means(lena_noise, K(1), S(3), var, h);
 psnr(result_K_3_S_51,lena_clean)
-disp('Loading 33%')
+displ('Loading 33%')
 
 % Function for call K=5 S=15
 result_K_5_S_15 = dos_non_local_means(lena_noise, K(2), S(1), var, h);
 psnr(result_K_5_S_15,lena_clean)
-disp('Loading 44%')
+displ('Loading 44%')
 
 % Function for call K=5 S=33
 result_K_5_S_33 = dos_non_local_means(lena_noise, K(2), S(2), var, h);
 psnr(result_K_3_S_33,lena_clean)
-disp('Loading 55%')
+displ('Loading 55%')
 
 % Function for call K=5 S=51
 result_K_5_S_51 = dos_non_local_means(lena_noise, K(2), S(3), var, h);
 psnr(result_K_5_S_51,lena_clean)
-disp('Loading 66%')
+displ('Loading 66%')
 
 % Function for call K=9 S=15
 result_K_9_S_15 = dos_non_local_means(lena_noise, K(3), S(1), var, h);
 psnr(result_K_9_S_15,lena_clean)
-disp('Loading 77%')
+displ('Loading 77%')
 
 % Function for call K=9 S=33
 result_K_9_S_33 = dos_non_local_means(lena_noise, K(3), S(2), var, h);
 psnr(result_K_9_S_33,lena_clean)
-disp('Loading 88%')
+displ('Loading 88%')
 
 % Function for call K=9 S=51
 result_K_9_S_51 = dos_non_local_means(lena_noise, K(3), S(3), var, h);
 psnr(result_K_9_S_51,lena_clean)
-disp('Loading 99%')
-disp('Loading 100%')
+displ('Loading 99%')
+displ('Loading 100%')
 
 
 
@@ -434,7 +433,7 @@ disp('Loading 100%')
 disp('Homework ends here')
 
 
-toc
+
 
 
 
